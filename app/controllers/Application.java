@@ -8,12 +8,12 @@ import java.util.List;
 
 public class Application extends Controller {
 
-    private static void checkTeacher(){
+	private static void checkTeacher(){
         checkUser();
-
         User u = (User) renderArgs.get("user");
-        if (!u.getType().equals(Constants.User.TEACHER)){
-            return;
+        
+        if (!u.getType().equals(models.Constants.User.TEACHER)){
+            forbidden("Acceso denegado: Se requieren permisos de profesor.");
         }
     }
 
