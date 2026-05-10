@@ -21,7 +21,6 @@ public class Secure extends Controller {
         User u = User.loadUser(username);
         if (u != null && u.getPassword().equals(HashUtils.getMd5(password))){
             session.put("username", username);
-            session.put("password", password);
             Application.index();
         }else{
             flash.put("error", Messages.get("Public.login.error.credentials"));
