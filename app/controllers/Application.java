@@ -22,7 +22,7 @@ public class Application extends Controller {
             User u = User.loadUser(session.get("username"));
             if (u != null){
                 renderArgs.put("user", u);
-                return;
+                forbidden("Access denied: Teacher permission are required.");
             }
         }
         Secure.login();
