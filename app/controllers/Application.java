@@ -2,6 +2,7 @@ package controllers;
 
 import models.Constants;
 import models.User;
+import play.i18n.Messages;
 import play.mvc.*;
 
 import java.util.List;
@@ -57,6 +58,16 @@ public class Application extends Controller {
 
     public static void doSetMark(String student, Integer mark) {
         User u = User.loadUser(student);
+        if (u == null) {
+            notFound();
+        }
+
+        if (mark == null || mark < 0 || mark > 10) {
+            flash.error(Messages.get("Application.setMark.error.invalidRange"));
+            setMark(student);
+            return;
+        }
+
         u.setMark(mark);
         u.save();
         index();
