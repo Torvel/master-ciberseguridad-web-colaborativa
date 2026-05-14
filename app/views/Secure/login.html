@@ -3,7 +3,10 @@
 <h2>&{'Public.login.title'}</h2>
 
 
-#{form @authenticate()}
+#{form @authenticate(), method:'POST'}
+    
+    #{authenticityToken /}
+    
     #{if flash.error}
         <p class="error">
             &{flash.error}
