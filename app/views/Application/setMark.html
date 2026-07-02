@@ -5,13 +5,17 @@
 
 <h3>Set mark for student: ${u.getUsername()}</h3>
 
+#{if flash.error}
+    <p class="error">&{flash.error}</p>
+#{/if}
+
 #{form @Application.doSetMark(u.getUsername())}
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
         <div class="form-group">
             <div class="input-icon">
-                <input class="form-control" type="text" placeholder="Mark (0-10)" id="mark" name="mark" />
+                <input class="form-control" type="number" min="0" max="10" step="1" required placeholder="Mark (0-10)" id="mark" name="mark" />
             </div>
         </div>
 
