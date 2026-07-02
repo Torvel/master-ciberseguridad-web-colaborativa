@@ -13,7 +13,7 @@ public class Application extends Controller {
 
         User u = (User) renderArgs.get("user");
         if (!u.getType().equals(Constants.User.TEACHER)){
-            return;
+            forbidden("Only teachers can perform this action");
         }
     }
 
