@@ -51,11 +51,13 @@ public class Application extends Controller {
 
 
     public static void setMark(String student) {
+        checkTeacher();
         User u = User.loadUser(student);
         render(u);
     }
 
     public static void doSetMark(String student, Integer mark) {
+        checkTeacher();
         User u = User.loadUser(student);
         u.setMark(mark);
         u.save();
