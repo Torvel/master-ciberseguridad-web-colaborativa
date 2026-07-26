@@ -20,6 +20,12 @@ public class PublicContentBase extends Controller {
         return;
     }
 
+    if (User.loadUser(username) != null){
+        flash.error("El nombre de usuario ya existe");
+        register();
+        return;
+    }
+
     User u = new User(username, HashUtils.getMd5(password), type, -1);
     u.save();
     registerComplete();
